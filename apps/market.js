@@ -1,7 +1,6 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import _ from 'lodash'
 import fetch from 'node-fetch'
-import common from '../lib/common/common.js'
 import yaml from 'yaml'
 import decimal from 'decimal'
 
@@ -24,7 +23,7 @@ export class Market extends plugin {
     super({
       name: '现货行情',
       event: 'message',
-      priority: 500,
+      priority: 5000,
       rule: [
         {
           reg: '^$[A-Z0-9]+',
