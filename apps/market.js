@@ -36,7 +36,9 @@ export class Market extends plugin {
 
   async coinInfo(e) {
     logger.info(chalk.rgb(133, 245, 103)(`行情插件查询中：${e.msg}`))
-    const configPath = '../config/config.yaml'
+    const configPath =
+      process.cwd().replace(/\\/g, '/') +
+      '../plugins/binance-plugin/config.yaml'
     if (!configPath) {
       const errMsg = '请配置币安插件 config.yaml 文件哦！'
       logger.error(errMsg)
