@@ -4,6 +4,8 @@ import fetch from 'node-fetch'
 import yaml from 'yaml'
 import decimal from 'decimal.js'
 const regCoinInfo = new RegExp(`^#现货[A-Z0-9]+`, 'g')
+import chalk from 'chalk'
+
 /**
  * TODO: 请求封装
  */
@@ -33,7 +35,7 @@ export class Market extends plugin {
   }
 
   async coinInfo(e) {
-    logger.info(chalk.rgb(134, 142, 204)(`行情插件查询中：${e.msg}`))
+    logger.info(chalk.rgb(133, 245, 103)(`行情插件查询中：${e.msg}`))
     const configPath = process.cwd().replace(/\\/g, '/') + '/config/config.yaml'
     if (!configPath) {
       const errMsg = '请配置币安插件 config.yaml 文件哦！'

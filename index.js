@@ -2,7 +2,7 @@
 import fs from 'fs'
 import chalk from 'chalk'
 
-//输出提示
+//输出提示 TODO颜色改改
 logger.info(chalk.rgb(134, 142, 204)(`行情插件~~~~初始化~~~~~`))
 
 if (!global.segment) {
