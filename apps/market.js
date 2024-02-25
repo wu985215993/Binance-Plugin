@@ -3,7 +3,7 @@ import _ from 'lodash'
 import fetch from 'node-fetch'
 import yaml from 'yaml'
 import decimal from 'decimal.js'
-
+const regCoinInfo = new RegExp(`^\$[A-Z0-9]+`)
 /**
  * TODO: 请求封装
  */
@@ -25,7 +25,7 @@ export class Market extends plugin {
       priority: 5000,
       rule: [
         {
-          reg: '^$[A-Z0-9]+',
+          reg: regCoinInfo,
           fnc: 'coinInfo',
         },
       ],
