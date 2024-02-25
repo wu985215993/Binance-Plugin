@@ -48,8 +48,9 @@ export class Market extends plugin {
     const config = yaml.parse(fs.readFileSync(configPath, 'utf-8'))
     const apiUrl = config.binance.apiUrl
     const url = `${apiUrl}/api/rest/market/getTradingDay`
+    const symbol = coinName + 'USDT'
     const reqBody = JSON.stringify({
-      symbol: coinName + 'USDT',
+      symbol,
       options: {
         type: 'MINI',
         timeZone: '0',
@@ -92,10 +93,14 @@ export class Market extends plugin {
     }
     // 输出结果
     const formatMsg = `
-    ${emoji.currentPrice} 当前价格: ${lastPrice}
-    ${emoji.support} 支撑: ${support}
-    ${emoji.resistance} 压力: ${resistance}
-    ${emoji.pivot} 中轴: ${pivot}`
+    ---------------------------------
+    ${coinName}
+    当前价格:${lastPrice}
+    支撑:    ${support}
+    压力:    ${resistance}
+    中轴:    ${pivot}
+    ---------------------------------
+    `
     e.reply(formatMsg, true)
     return
   }
