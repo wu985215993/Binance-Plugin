@@ -40,7 +40,7 @@ export class Market extends plugin {
       logger.error(errMsg)
       e.reply(errMsg, true, { recallMsg: 5 })
     }
-    const coinName = e.msg.replace('$', '').trim()
+    const coinName = e.msg.replace('#现货', '').trim()
     const config = yaml.parse(fs.readFileSync(configPath, 'utf-8'))
     const apiUrl = config.binance.apiUrl
     const url = `${apiUrl}/api/rest/market/getTradingDay`
