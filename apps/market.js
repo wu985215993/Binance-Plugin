@@ -35,7 +35,7 @@ export class Market extends plugin {
   }
 
   async coinInfo(e) {
-    logger.info(chalk.rgb(133, 245, 103)(`行情插件查询中：${e.msg}`))
+    logger.info(chalk.rgb(133, 245, 103)(`- 行情插件查询中：${e.msg}`))
     const configPath =
       process.cwd().replace(/\\/g, '/') +
       '/plugins/binance-plugin/config/config.yaml'
@@ -55,13 +55,13 @@ export class Market extends plugin {
         timeZone: '0',
       },
     })
-    const res = await fetch(url, { ...requestOptions, body: reqBody })
+    const result = await fetch(url, { ...requestOptions, body: reqBody })
       .then((response) => response.json())
       .catch(({ message }) => {
         logger.error('error', message)
         e.reply(message, true, { recallMsg: 5 })
       })
-    if (res.statusCode === 500) {
+    if (result.statusCode === 500) {
       const errMsg = '币价查询失败请检查代币名称，或者稍等一会再试~~~~'
       logger.error(errMsg)
       e.reply(errMsg, true, { recallMsg: 5 })
