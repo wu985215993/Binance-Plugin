@@ -2,7 +2,7 @@ import plugin from '../../../lib/plugins/plugin.js'
 import _ from 'lodash'
 import fetch from 'node-fetch'
 import yaml from 'yaml'
-import decimal from 'decimal'
+import decimal from 'decimal.js'
 
 /**
  * TODO: 请求封装
