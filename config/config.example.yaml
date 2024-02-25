@@ -1,0 +1,3 @@
+# 配置 Stierwu-binance-api的接口地址
+binance:
+  apiUrl: 'https://api.binance.com/api/v3'

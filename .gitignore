@@ -1,0 +1,10 @@
+node_modules/
+data/
+*_test.js
+test.*
+*.log
+.vscode/
+.eslintignore
+temp/
+*.css.map
+config.yaml
