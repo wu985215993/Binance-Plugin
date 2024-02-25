@@ -3,7 +3,7 @@ import _ from 'lodash'
 import fetch from 'node-fetch'
 import yaml from 'yaml'
 import decimal from 'decimal.js'
-const regCoinInfo = new RegExp(`^\$[A-Z0-9]+`)
+const regCoinInfo = new RegExp(`^\$[A-Z0-9]+`, 'g')
 /**
  * TODO: 请求封装
  */
@@ -22,7 +22,7 @@ export class Market extends plugin {
     super({
       name: '现货行情',
       event: 'message',
-      priority: 5000,
+      priority: 500,
       rule: [
         {
           reg: regCoinInfo,
@@ -33,6 +33,7 @@ export class Market extends plugin {
   }
 
   async coinInfo(e) {
+    logger.info(chalk.rgb(134, 142, 204)(`行情插件查询中：${e.msg}`))
     const configPath = process.cwd().replace(/\\/g, '/') + '/config/config.yaml'
     if (!configPath) {
       const errMsg = '请配置币安插件 config.yaml 文件哦！'
