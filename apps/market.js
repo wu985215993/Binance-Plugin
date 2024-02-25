@@ -92,16 +92,12 @@ export class Market extends plugin {
       currentPrice: '💲',
     }
     // 输出结果
-    const formatMsg = `
-    ---------------------------------
-    ${coinName}
+    const formatMsg = `${coinName}
     当前价格:${lastPrice}
     支撑:    ${support}
     压力:    ${resistance}
-    中轴:    ${pivot}
-    ---------------------------------
-    `
-    e.reply(formatMsg, true)
+    中轴:    ${pivot}`
+    e.reply(formatMsg, true, { recallMsg: 0 }, true)
     return
   }
 }
