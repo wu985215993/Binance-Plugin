@@ -1,6 +1,6 @@
 {
   "name": "Binance-Plugin",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "适用于Yunzai-Botv3的plugin，获取币圈行情",
   "main": "index.js",
   "type": "module",

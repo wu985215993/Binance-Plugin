@@ -5,6 +5,7 @@ import yaml from 'yaml'
 import decimal from 'decimal.js'
 const regCoinInfo = new RegExp(`^#现货[A-Z0-9]+`, 'g')
 import chalk from 'chalk'
+import { getKlineCandlestickData } from '../constants/api.js'
 
 /**
  * TODO: 请求封装
@@ -47,13 +48,15 @@ export class Market extends plugin {
     const coinName = e.msg.replace('#现货', '').trim()
     const config = yaml.parse(fs.readFileSync(configPath, 'utf-8'))
     const apiUrl = config.binance.apiUrl
-    const url = `${apiUrl}/api/rest/market/getTradingDay`
-    const symbol = coinName + 'USDT'
+    const url = `${apiUrl}${getKlineCandlestickData}`
+    const symbol = coinName.toUpperCase() + 'USDT'
     const reqBody = JSON.stringify({
       symbol,
+      interval: '1d',
       options: {
-        type: 'MINI',
         timeZone: '0',
+        // 获取从当前天到之前天的数据，此处只获取最新数据昨天和今天的数据
+        limit: 2,
       },
     })
     const result = await fetch(url, { ...requestOptions, body: reqBody })
@@ -68,11 +71,11 @@ export class Market extends plugin {
       e.reply(errMsg, true, { recallMsg: 5 })
     }
     // 定义昨日最高、昨日最低和收盘价 这里还有点儿问题用的是今日的待接口更新
-    const yesterdayHigh = new decimal(result.highPrice)
-    const yesterdayLow = new decimal(result.lowPrice)
-    const closePrice = new decimal(result.openPrice)
+    const yesterdayHigh = new decimal(result[0].highPrice)
+    const yesterdayLow = new decimal(result[0].lowPrice)
+    const closePrice = new decimal(result[0].openPrice)
     // 最新价格
-    const lastPrice = new decimal(result.lastPrice)
+    const lastPrice = new decimal(result[1].closePrice)
 
     // 计算中轴
     const pivot = closePrice
