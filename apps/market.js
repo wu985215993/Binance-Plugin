@@ -99,7 +99,9 @@ export class Market extends plugin {
 当前价格:  ${lastPrice}
 支撑:     ${support}
 压力:     ${resistance}
-中轴:     ${pivot}`
+中轴:     ${pivot}
+昨日收盘价：${result[0].closePrice}}
+`
     e.reply(formatMsg, true, { recallMsg: 0 }, true)
     return
   }
