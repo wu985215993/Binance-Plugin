@@ -87,15 +87,15 @@ export class Market extends plugin {
     // 计算支撑和压力
     const support = pivot.minus(yesterdayHigh.minus(pivot)).toDecimalPlaces(4)
     const resistance = pivot.plus(pivot.minus(yesterdayLow)).toDecimalPlaces(4)
-    // 添加 Emoji
-    const emoji = {
-      support: '⬇️',
-      resistance: '⬆️',
-      pivot: '⚖️',
-      currentPrice: '💲',
-    }
+    // 计算波动百分比
+    const changePercent = lastPrice
+      .minus(result[0].closePrice)
+      .dividedBy(result[0].closePrice)
+      .times(100)
+      .toDecimalPlaces(2)
+
     // 输出结果
-    const formatMsg = `${coinName}
+    const formatMsg = `${coinName} (${changePercent}%)
 当前价格:  ${lastPrice}
 支撑:     ${support}
 压力:     ${resistance}
