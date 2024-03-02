@@ -50,6 +50,13 @@ export class Market extends plugin {
     const apiUrl = config.binance.apiUrl
     const url = `${apiUrl}${getKlineCandlestickData}`
     const symbol = coinName.toUpperCase() + 'USDT'
+    console.log(
+      '%c [ coinName symbol]-53',
+      'font-size:13px; background:pink; color:#bf2c9f;',
+      coinName,
+      symbol
+    )
+
     const reqBody = JSON.stringify({
       symbol,
       interval: '1d',
