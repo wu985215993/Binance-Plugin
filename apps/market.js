@@ -42,7 +42,7 @@ export class Market extends plugin {
     const url = `${apiUrl}${getKlineCandlestickData}`
     const symbol = coinName.toUpperCase() + 'USDT'
 
-    const reqBody = JSON.stringify({
+    const reqBody = {
       symbol,
       interval: '1d',
       options: {
@@ -50,7 +50,7 @@ export class Market extends plugin {
         // 获取从当前天到之前天的数据，此处只获取最新数据昨天和今天的数据
         limit: 2,
       },
-    })
+    }
 
     try {
       const result = await request(url, { ...requestOptions, body: reqBody })
