@@ -3,7 +3,7 @@ import _ from 'lodash'
 import fetch from 'node-fetch'
 import yaml from 'yaml'
 import decimal from 'decimal.js'
-const regCoinInfo = new RegExp(`^#现货[A-Z0-9]+`, 'g')
+const regCoinInfo = new RegExp(`^#现货[A-Za-z0-9]+`, 'g')
 import chalk from 'chalk'
 import { getKlineCandlestickData } from '../constants/api.js'
 
@@ -50,12 +50,6 @@ export class Market extends plugin {
     const apiUrl = config.binance.apiUrl
     const url = `${apiUrl}${getKlineCandlestickData}`
     const symbol = coinName.toUpperCase() + 'USDT'
-    console.log(
-      '%c [ coinName symbol]-53',
-      'font-size:13px; background:pink; color:#bf2c9f;',
-      coinName,
-      symbol
-    )
 
     const reqBody = JSON.stringify({
       symbol,
