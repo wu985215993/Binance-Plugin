@@ -54,7 +54,6 @@ export class Market extends plugin {
 
     try {
       const result = await request(url, { ...requestOptions, body: reqBody })
-      console.log(data)
 
       if (result.statusCode === 500) {
         const errMsg = '币价查询失败请检查代币名称，或者稍等一会再试~~~~'
