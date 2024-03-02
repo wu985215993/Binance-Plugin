@@ -9,8 +9,6 @@ import request from '../utils/request.js'
 
 const requestOptions = {
   method: 'POST',
-  headers: myHeaders,
-  redirect: 'follow',
 }
 
 export class Market extends plugin {
