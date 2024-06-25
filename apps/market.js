@@ -4,6 +4,7 @@ import yaml from 'yaml'
 import decimal from 'decimal.js'
 const regCoinInfo = new RegExp(`^#现货[A-Za-z0-9]+`, 'g')
 import chalk from 'chalk'
+import fs from 'fs'
 import { getKlineCandlestickData } from '../constants/api.js'
 import request from '../utils/request.js'
 
