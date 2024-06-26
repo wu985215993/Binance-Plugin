@@ -74,8 +74,8 @@ export class MarketNews extends plugin {
         }
         MESSAGE.push(newsMessage.join('\n\n'))
       }
-      // e.reply(MESSAGE, false)
-      e.reply()
+      e.reply(MESSAGE, false)
+      // e.reply()
       return true
     } catch ({ message }) {
       logger.error('error', message)
